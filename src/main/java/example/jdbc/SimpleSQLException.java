@@ -15,6 +15,7 @@ public class SimpleSQLException extends RuntimeException
     private final SQLException sqlException;
 
     public SimpleSQLException(SQLException sqlException) {
+        super(sqlException);
         this.sqlException = sqlException;
     }
 

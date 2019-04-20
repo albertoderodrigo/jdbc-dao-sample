@@ -167,6 +167,14 @@ public abstract class JDBCUtils {
             } catch (SQLException e1) {
                 throw new SimpleSQLException(e1);
             }
+
+            if (e instanceof RuntimeException) {
+                throw (RuntimeException) e;
+            } else if (e instanceof SQLException) {
+                throw new SimpleSQLException((SQLException) e);
+            } else {
+                e.printStackTrace();
+            }
         } finally {
             try {
                 connection.setAutoCommit(autoCommit);
